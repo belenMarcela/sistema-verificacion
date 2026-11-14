@@ -276,7 +276,8 @@ export default function SistemaVerificacion() {
           }));
 
         if (matriculasMasivas.length > 0) {
-          await supabase.from('matriculas').insert(matriculasMasivas).catch(() => {});
+          const { error } = await supabase.from('matriculas').insert(matriculasMasivas);
+if (error) console.error("Error silencioso:", error);
         }
       }
 
